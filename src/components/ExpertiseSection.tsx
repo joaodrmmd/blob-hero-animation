@@ -1,4 +1,6 @@
 import { useReveal } from "@/hooks/useReveal";
+import SpotlightCard from "./effects/SpotlightCard";
+import DecryptedText from "./effects/DecryptedText";
 
 const cards = [
   { num: "01", title: "Offensive Security", body: "Pentesting, análise de vulnerabilidades e exploitation. Desenvolvimento de payloads e técnicas de evasão." },
@@ -27,16 +29,31 @@ const ExpertiseSection = () => {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {cards.map((c) => (
-            <div key={c.num} className="bg-card p-10 md:p-12 relative overflow-hidden group hover:bg-surface transition-colors">
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent-brand scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500" />
-              <div className="font-mono text-xs text-text-dim tracking-[2px] mb-6">
-                <strong className="text-primary">{c.num}</strong>
+            <SpotlightCard
+              key={c.num}
+              className="group"
+              spotlightColor="rgba(168, 130, 255, 0.12)"
+            >
+              <div className="p-10 md:p-12 relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent-brand scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500" />
+                <div className="font-mono text-xs text-text-dim tracking-[2px] mb-6">
+                  <strong className="text-primary">{c.num}</strong>
+                </div>
+                <h3 className="font-display text-lg font-bold text-foreground tracking-tight mb-3">
+                  <DecryptedText
+                    text={c.title}
+                    speed={30}
+                    maxIterations={6}
+                    animateOn="hover"
+                    className="text-foreground"
+                    encryptedClassName="text-primary/40"
+                  />
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed font-light">{c.body}</p>
               </div>
-              <h3 className="font-display text-lg font-bold text-foreground tracking-tight mb-3">{c.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed font-light">{c.body}</p>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>

@@ -1,31 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import CountUp from "./effects/CountUp";
 
 const stats = [
   { target: 7, label: "Projetos de Segurança" },
   { target: 16, label: "Ferramentas Dominadas" },
   { target: 5, label: "Certificações" },
-  { target: 1000, label: "Horas de Estudo" },
+  { target: 1000, label: "Horas de Estudo", separator: "." },
 ];
-
-const Counter = ({ target, visible }: { target: number; visible: boolean }) => {
-  const [count, setCount] = useState(0);
-  const started = useRef(false);
-
-  useEffect(() => {
-    if (!visible || started.current) return;
-    started.current = true;
-    const dur = 1400;
-    const t0 = performance.now();
-    const frame = (now: number) => {
-      const p = Math.min((now - t0) / dur, 1);
-      setCount(Math.floor((1 - Math.pow(1 - p, 3)) * target));
-      if (p < 1) requestAnimationFrame(frame);
-    };
-    requestAnimationFrame(frame);
-  }, [visible, target]);
-
-  return <>{count}+</>;
-};
 
 const StatsBar = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -52,7 +33,8 @@ const StatsBar = () => {
           >
             <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent-brand scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500" />
             <div className="font-display text-5xl font-extrabold text-primary leading-none mb-2 tabular-nums">
-              <Counter target={s.target} visible={visible} />
+              <CountUp to={s.target} duration={1.8} startWhen={visible} separator={s.separator || ""} />
+              <span>+</span>
             </div>
             <div className="font-mono text-xs text-text-dim uppercase tracking-[2px]">{s.label}</div>
           </div>

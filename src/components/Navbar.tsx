@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import StaggeredMenu from "./effects/StaggeredMenu";
 
 const navLinks = [
   { label: "Expertise", href: "#expertise" },
@@ -46,7 +47,12 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <div className="shrink-0" />
+        <div className="shrink-0 hidden md:block" />
+
+        {/* Mobile menu */}
+        <div className="ml-auto md:hidden">
+          <StaggeredMenu items={navLinks} />
+        </div>
       </div>
     </nav>
   );
