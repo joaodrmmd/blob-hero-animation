@@ -1,8 +1,20 @@
-import BlobScene from "./BlobScene";
+import DitherBackground from "./effects/DitherBackground";
+import DecryptedText from "./effects/DecryptedText";
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center px-6 md:px-12 pt-28 pb-20 overflow-hidden">
-    <BlobScene />
+    {/* Dither Background with gradient overlay */}
+    <DitherBackground
+      waveColor={[0.35, 0.15, 0.55]}
+      waveSpeed={0.025}
+      waveFrequency={2.5}
+      waveAmplitude={0.35}
+      colorNum={4}
+      pixelSize={3}
+    />
+    {/* Gradient overlay for readability */}
+    <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/40 z-[1]" />
+    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60 z-[1]" />
 
     <div className="relative z-10 max-w-[660px]">
       {/* Eyebrow */}
@@ -16,13 +28,33 @@ const HeroSection = () => (
         </span>
       </div>
 
-      {/* Heading */}
+      {/* Heading with DecryptedText */}
       <h1
         className="hero-rise font-display font-extrabold leading-none tracking-[-3px] mb-7"
         style={{ fontSize: "clamp(3em, 6.5vw, 5.6em)", animationDelay: "0.4s" }}
       >
-        <span className="block text-foreground">Threat Intel</span>
-        <span className="block text-primary">&amp; Offensive</span>
+        <span className="block text-foreground">
+          <DecryptedText
+            text="Threat Intel"
+            speed={40}
+            maxIterations={8}
+            sequential
+            animateOn="view"
+            className="text-foreground"
+            encryptedClassName="text-primary/40"
+          />
+        </span>
+        <span className="block text-primary">
+          <DecryptedText
+            text="& Offensive"
+            speed={40}
+            maxIterations={8}
+            sequential
+            animateOn="view"
+            className="text-primary"
+            encryptedClassName="text-primary/30"
+          />
+        </span>
         <span className="block font-sans font-normal italic text-muted-foreground mt-2.5 tracking-normal" style={{ fontSize: "0.5em" }}>
           Security Research
         </span>

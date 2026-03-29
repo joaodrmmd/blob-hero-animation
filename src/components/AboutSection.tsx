@@ -1,3 +1,5 @@
+import BorderGlow from "./effects/BorderGlow";
+
 const AboutSection = () => (
   <section id="about" className="bg-card border-t border-border">
     <div className="max-w-[1380px] mx-auto px-6 md:px-12 py-20 md:py-28">
@@ -26,32 +28,34 @@ const AboutSection = () => (
           </p>
         </div>
 
-        <div className="bg-surface border border-border rounded overflow-hidden">
-          <div className="px-7 py-4 bg-surface-2 border-b border-border font-mono text-xs text-text-dim tracking-[2px] flex items-center gap-2">
-            <span className="text-primary">$</span> cat skills.json
-          </div>
-          {[
-            { label: "Linguagens", val: "Python, C, PowerShell, Bash, Dart, JavaScript, Ruby", hi: ["Python"] },
-            { label: "Ferramentas", val: "Metasploit, Burp Suite, Nmap, Ghidra, Wireshark, nuclei, Nessus, OWASP ZAP, Docker" },
-            { label: "Especializações", val: "Análise de Malware, Confecção de Antivirus, OSINT, Engenharia Social, Pentesting" },
-            { label: "Certificações", val: "CRT-ID ✓  CPTS (Estudando)  Web-RTA (Em progresso)", hi: ["CRT-ID ✓"] },
-          ].map((s) => (
-            <div key={s.label} className="px-7 py-5 border-b border-border last:border-b-0 flex flex-col gap-2">
-              <div className="font-mono text-[0.68em] tracking-[2px] uppercase text-accent-brand">{s.label}</div>
-              <div className="font-mono text-sm text-muted-foreground leading-relaxed">
-                {s.hi
-                  ? s.val.split(new RegExp(`(${s.hi.join("|")})`, "g")).map((part, i) =>
-                      s.hi!.includes(part) ? (
-                        <span key={i} className="text-primary">{part}</span>
-                      ) : (
-                        <span key={i}>{part}</span>
-                      )
-                    )
-                  : s.val}
-              </div>
+        <BorderGlow glowColor="262 90 73" borderRadius={4} glowIntensity={0.5}>
+          <div className="bg-surface border border-border rounded overflow-hidden">
+            <div className="px-7 py-4 bg-surface-2 border-b border-border font-mono text-xs text-text-dim tracking-[2px] flex items-center gap-2">
+              <span className="text-primary">$</span> cat skills.json
             </div>
-          ))}
-        </div>
+            {[
+              { label: "Linguagens", val: "Python, C, PowerShell, Bash, Dart, JavaScript, Ruby", hi: ["Python"] },
+              { label: "Ferramentas", val: "Metasploit, Burp Suite, Nmap, Ghidra, Wireshark, nuclei, Nessus, OWASP ZAP, Docker" },
+              { label: "Especializações", val: "Análise de Malware, Confecção de Antivirus, OSINT, Engenharia Social, Pentesting" },
+              { label: "Certificações", val: "CRT-ID ✓  CPTS (Estudando)  Web-RTA (Em progresso)", hi: ["CRT-ID ✓"] },
+            ].map((s) => (
+              <div key={s.label} className="px-7 py-5 border-b border-border last:border-b-0 flex flex-col gap-2">
+                <div className="font-mono text-[0.68em] tracking-[2px] uppercase text-accent-brand">{s.label}</div>
+                <div className="font-mono text-sm text-muted-foreground leading-relaxed">
+                  {s.hi
+                    ? s.val.split(new RegExp(`(${s.hi.join("|")})`, "g")).map((part, i) =>
+                        s.hi!.includes(part) ? (
+                          <span key={i} className="text-primary">{part}</span>
+                        ) : (
+                          <span key={i}>{part}</span>
+                        )
+                      )
+                    : s.val}
+                </div>
+              </div>
+            ))}
+          </div>
+        </BorderGlow>
       </div>
     </div>
   </section>

@@ -1,3 +1,5 @@
+import BorderGlow from "./effects/BorderGlow";
+
 const projects = [
   {
     cat: "Conferência",
@@ -45,36 +47,41 @@ const ProjectsSection = () => (
         </h2>
       </header>
 
-      <div className="flex flex-col border border-border overflow-hidden">
+      <div className="flex flex-col gap-4">
         {projects.map((p, i) => (
-          <article
+          <BorderGlow
             key={i}
-            className="grid grid-cols-1 md:grid-cols-[300px_1fr] border-b border-border last:border-b-0 bg-card hover:bg-surface transition-colors relative group"
+            glowColor="262 90 73"
+            borderRadius={4}
+            glowRadius={30}
+            glowIntensity={0.6}
           >
-            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-primary to-accent-brand scale-y-0 origin-top group-hover:scale-y-100 transition-transform duration-400" />
-            <div className="p-7 md:p-10 border-b md:border-b-0 md:border-r border-border flex flex-col gap-4">
-              <div className="font-mono text-xs tracking-[2.5px] uppercase text-accent-brand">{p.cat}</div>
-              <div className="flex flex-wrap gap-1.5">
-                {p.tags.map((t) => (
-                  <span key={t} className="font-mono text-[0.68em] px-2.5 py-1 border border-border-strong text-text-dim bg-primary-dim rounded-sm tracking-wide">
-                    {t}
-                  </span>
-                ))}
+            <article className="grid grid-cols-1 md:grid-cols-[300px_1fr] bg-card relative group">
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-primary to-accent-brand scale-y-0 origin-top group-hover:scale-y-100 transition-transform duration-400" />
+              <div className="p-7 md:p-10 border-b md:border-b-0 md:border-r border-border flex flex-col gap-4">
+                <div className="font-mono text-xs tracking-[2.5px] uppercase text-accent-brand">{p.cat}</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {p.tags.map((t) => (
+                    <span key={t} className="font-mono text-[0.68em] px-2.5 py-1 border border-border-strong text-text-dim bg-primary-dim rounded-sm tracking-wide">
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="p-7 md:p-10 md:pl-12">
-              <h3 className="font-display text-xl font-bold text-foreground tracking-tight mb-3 leading-tight">{p.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-6 font-light">{p.desc}</p>
-              <a
-                href={p.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-sm text-primary border-b border-primary pb-0.5 hover:text-accent-brand hover:border-accent-brand transition-colors"
-              >
-                {p.linkText}
-              </a>
-            </div>
-          </article>
+              <div className="p-7 md:p-10 md:pl-12">
+                <h3 className="font-display text-xl font-bold text-foreground tracking-tight mb-3 leading-tight">{p.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6 font-light">{p.desc}</p>
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-sm text-primary border-b border-primary pb-0.5 hover:text-accent-brand hover:border-accent-brand transition-colors"
+                >
+                  {p.linkText}
+                </a>
+              </div>
+            </article>
+          </BorderGlow>
         ))}
       </div>
     </div>
