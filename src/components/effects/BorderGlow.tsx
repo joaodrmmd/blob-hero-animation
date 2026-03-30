@@ -13,9 +13,9 @@ interface BorderGlowProps {
 const BorderGlow = ({
   children,
   className = "",
-  glowColor = "262 90 73",
-  backgroundColor = "hsl(260, 33%, 6%)",
-  borderRadius = 12,
+  glowColor = "170 80 55",
+  backgroundColor = "transparent",
+  borderRadius = 16,
   glowRadius = 40,
   glowIntensity = 0.8,
 }: BorderGlowProps) => {
@@ -43,7 +43,6 @@ const BorderGlow = ({
       onMouseLeave={() => setIsHovered(false)}
       style={{ borderRadius }}
     >
-      {/* Glow border effect */}
       <div
         className="absolute -inset-px transition-opacity duration-300 pointer-events-none"
         style={{
@@ -52,7 +51,6 @@ const BorderGlow = ({
           background: `radial-gradient(${glowRadius * 8}px circle at ${mousePos.x}px ${mousePos.y}px, hsl(${h}, ${s}%, ${l}%), hsl(${h}, ${s}%, ${l}%, 0.3) 40%, transparent 70%)`,
         }}
       />
-      {/* Inner content */}
       <div
         className="relative overflow-hidden"
         style={{
