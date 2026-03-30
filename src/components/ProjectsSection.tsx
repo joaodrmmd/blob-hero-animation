@@ -1,86 +1,88 @@
 import BorderGlow from "./effects/BorderGlow";
-import BlueprintSection from "./layout/BlueprintSection";
 
 const projects = [
   {
     cat: "Conferência",
     tags: ["Organização", "Comunidade", "Networking"],
     title: "Security BSides Recife",
-    desc: "Organização da conferência Security BSides Recife — conferência de Segurança da Informação e Cultura Hacker que fomenta a cena de hacking na região Nordeste.",
+    desc: "Conferência de Segurança da Informação e Cultura Hacker que fomenta a cena de hacking na região Nordeste.",
     link: "https://bsidesrecife.com.br",
-    linkText: "Ver site →",
+    linkText: "Ver site",
   },
   {
     cat: "Ferramenta",
-    tags: ["PowerShell", "Bash", "Linux", "Windows", "MacOS"],
-    title: "<A1.dev> Toolbox Multi-Plataforma",
-    desc: "Multi Tool para facilitar setup de ambientes de teste. Solução cross-platform presente em GNU Linux, Windows e MacOS com foco em automação e praticidade.",
+    tags: ["PowerShell", "Bash", "Cross-Platform"],
+    title: "<A1.dev> Toolbox",
+    desc: "Multi Tool para setup de ambientes de teste. Solução cross-platform presente em Linux, Windows e MacOS.",
     link: "#",
-    linkText: "Ver no GitHub →",
+    linkText: "Ver no GitHub",
   },
   {
-    cat: "Threat Intelligence",
-    tags: ["Python", "C", "LLMs", "ELMs"],
-    title: "Antivirus com Inteligência Artificial",
-    desc: "Antivirus desenvolvido para detectar agentes maliciosos via análise de características, padrões e hashes — detecção proativa antes da execução do agente.",
+    cat: "Threat Intel",
+    tags: ["Python", "C", "LLMs"],
+    title: "Antivirus com IA",
+    desc: "Antivírus para detectar agentes maliciosos via análise de características, padrões e hashes — detecção proativa.",
     link: "#",
-    linkText: "Ver no GitHub →",
+    linkText: "Ver no GitHub",
   },
   {
     cat: "Pesquisa",
-    tags: ["Análise de APTs", "Reverse Engineering", "CVEs"],
+    tags: ["APTs", "Reverse Eng.", "CVEs"],
     title: "White Paper: Operation Aurora",
-    desc: "Pesquisa, coleta, análise e documentação do Modus Operandi da Operação Aurora. Paper desenvolvido em grupo com aspirantes da LSEC — UFPE.",
+    desc: "Pesquisa e análise do Modus Operandi da Operação Aurora. Paper desenvolvido com a LSEC — UFPE.",
     link: "https://drive.google.com/file/d/1Px4aM_647j7tfIzJ2aFz6BBhnTWdtx9d/view",
-    linkText: "Ler Write-up →",
+    linkText: "Ler Write-up",
   },
 ];
 
 const ProjectsSection = () => (
-  <BlueprintSection id="projects" label="sec::projects" className="bg-background">
-    <div className="max-w-[1380px] mx-auto px-6 md:px-12 py-20 md:py-28">
+  <section id="projects" className="relative py-24 md:py-32 px-6 md:px-16 lg:px-24">
+    <div className="max-w-[1200px] mx-auto">
       <header className="mb-16">
-        <div className="font-mono text-xs tracking-[3px] text-accent-brand uppercase mb-3 flex items-center gap-2.5">
-          <span className="text-text-dim">//</span> Trabalho em Destaque
+        <div className="section-label">
+          <span className="w-8 h-px bg-primary" />
+          Trabalho em Destaque
         </div>
-        <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight text-foreground leading-none">
+        <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight text-foreground leading-none">
           Projetos Recentes
         </h2>
       </header>
 
-      <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {projects.map((p, i) => (
-          <BorderGlow key={i} glowColor="262 90 73" borderRadius={4} glowRadius={30} glowIntensity={0.6}>
-            <article className="grid grid-cols-1 md:grid-cols-[300px_1fr] bg-card relative group">
-              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-primary to-accent-brand scale-y-0 origin-top group-hover:scale-y-100 transition-transform duration-400" />
-              <div className="p-7 md:p-10 border-b md:border-b-0 md:border-r border-border flex flex-col gap-4">
-                <div className="font-mono text-xs tracking-[2.5px] uppercase text-accent-brand">{p.cat}</div>
-                <div className="flex flex-wrap gap-1.5">
-                  {p.tags.map((t) => (
-                    <span key={t} className="font-mono text-[0.68em] px-2.5 py-1 border border-border-strong text-text-dim bg-primary-dim rounded-sm tracking-wide">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+          <BorderGlow key={i} glowColor="170 80 55" borderRadius={16} glowRadius={30} glowIntensity={0.5}>
+            <article className="glass-card-strong p-8 md:p-10 h-full flex flex-col group !rounded-2xl">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="font-mono text-xs tracking-wider uppercase text-primary bg-primary-dim px-3 py-1 rounded-full">
+                  {p.cat}
+                </span>
               </div>
-              <div className="p-7 md:p-10 md:pl-12">
-                <h3 className="font-display text-xl font-bold text-foreground tracking-tight mb-3 leading-tight">{p.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6 font-light">{p.desc}</p>
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-sm text-primary border-b border-primary pb-0.5 hover:text-accent-brand hover:border-accent-brand transition-colors"
-                >
-                  {p.linkText}
-                </a>
+              <h3 className="font-display text-xl font-bold text-foreground tracking-tight mb-3 leading-tight">{p.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed font-light mb-6 flex-1">{p.desc}</p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {p.tags.map((t) => (
+                  <span key={t} className="font-mono text-[0.65rem] px-3 py-1 rounded-full border border-border-strong text-muted-foreground bg-glass">
+                    {t}
+                  </span>
+                ))}
               </div>
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-mono text-sm text-primary hover:text-accent-brand transition-colors"
+              >
+                {p.linkText}
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
             </article>
           </BorderGlow>
         ))}
       </div>
     </div>
-  </BlueprintSection>
+  </section>
 );
 
 export default ProjectsSection;

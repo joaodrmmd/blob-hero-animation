@@ -1,65 +1,58 @@
 import BorderGlow from "./effects/BorderGlow";
-import BlueprintSection from "./layout/BlueprintSection";
 
 const AboutSection = () => (
-  <BlueprintSection id="about" label="sec::about" className="bg-card">
-    <div className="max-w-[1380px] mx-auto px-6 md:px-12 py-20 md:py-28">
+  <section id="about" className="relative py-24 md:py-32 px-6 md:px-16 lg:px-24 bg-card/30">
+    <div className="max-w-[1200px] mx-auto">
       <header className="mb-16">
-        <div className="font-mono text-xs tracking-[3px] text-accent-brand uppercase mb-3 flex items-center gap-2.5">
-          <span className="text-text-dim">//</span> Background
+        <div className="section-label">
+          <span className="w-8 h-px bg-primary" />
+          Background
         </div>
-        <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight text-foreground leading-none">
+        <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight text-foreground leading-none">
           Sobre Mim
         </h2>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         <div className="space-y-5 text-muted-foreground text-base leading-relaxed font-light">
           <p>
             Apaixonado por Cibersegurança, cursando <span className="text-foreground font-medium">Engenharia de Telecomunicações</span> na UFPE e{" "}
-            <span className="text-foreground font-medium">Engenharia de Software</span> na FACINT. Atuo como{" "}
-            <span className="text-foreground font-medium">Professor Auxiliar</span> na pós-graduação em Ciberinteligência e Segurança Ofensiva, e me envolvo ativamente na organização da Security BSides Recife.
+            <span className="text-foreground font-medium">Engenharia de Software</span> na FACINT.
           </p>
           <p>
-            Minha trajetória inclui pesquisa em Threat Intelligence analisando a "Operation Aurora", desenvolvimento de um antivírus para detecção de scripts maliciosos via machine learning, e o A1.dev — toolbox multiplataforma com backend em Python e frontend em Flutter.
+            Atuo como <span className="text-foreground font-medium">Professor Auxiliar</span> na pós-graduação em Ciberinteligência e Segurança Ofensiva, e me envolvo ativamente na organização da Security BSides Recife.
           </p>
           <p>
-            Familiaridade com <span className="text-foreground font-medium">Python, C</span> e com frameworks como NIST,{" "}
-            <span className="text-foreground font-medium">MITRE ATT&CK</span>, Git e Docker.
+            Minha trajetória inclui pesquisa em Threat Intelligence, desenvolvimento de antivírus com machine learning, e o A1.dev — toolbox multiplataforma com backend em Python.
           </p>
         </div>
 
-        <BorderGlow glowColor="262 90 73" borderRadius={4} glowIntensity={0.5}>
-          <div className="bg-surface border border-border rounded overflow-hidden">
-            <div className="px-7 py-4 bg-surface-2 border-b border-border font-mono text-xs text-text-dim tracking-[2px] flex items-center gap-2">
-              <span className="text-primary">$</span> cat skills.json
+        <BorderGlow glowColor="170 80 55" borderRadius={16} glowIntensity={0.4}>
+          <div className="glass-card-strong overflow-hidden !rounded-2xl">
+            <div className="px-7 py-4 border-b border-border flex items-center gap-3">
+              <div className="flex gap-2">
+                <span className="w-3 h-3 rounded-full bg-destructive/60" />
+                <span className="w-3 h-3 rounded-full bg-accent-brand/60" />
+                <span className="w-3 h-3 rounded-full bg-green/60" />
+              </div>
+              <span className="font-mono text-xs text-text-dim tracking-wider ml-2">skills.json</span>
             </div>
             {[
-              { label: "Linguagens", val: "Python, C, PowerShell, Bash, Dart, JavaScript, Ruby", hi: ["Python"] },
-              { label: "Ferramentas", val: "Metasploit, Burp Suite, Nmap, Ghidra, Wireshark, nuclei, Nessus, OWASP ZAP, Docker" },
-              { label: "Especializações", val: "Análise de Malware, Confecção de Antivirus, OSINT, Engenharia Social, Pentesting" },
-              { label: "Certificações", val: "CRT-ID ✓  CPTS (Estudando)  Web-RTA (Em progresso)", hi: ["CRT-ID ✓"] },
+              { label: "Linguagens", val: "Python, C, PowerShell, Bash, Dart, JS, Ruby" },
+              { label: "Ferramentas", val: "Metasploit, Burp Suite, Nmap, Ghidra, Wireshark, Nuclei" },
+              { label: "Especializações", val: "Malware Analysis, OSINT, Social Eng., Pentesting" },
+              { label: "Certificações", val: "CRT-ID ✓ · CPTS (Estudando) · Web-RTA (Em progresso)" },
             ].map((s) => (
-              <div key={s.label} className="px-7 py-5 border-b border-border last:border-b-0 flex flex-col gap-2">
-                <div className="font-mono text-[0.68em] tracking-[2px] uppercase text-accent-brand">{s.label}</div>
-                <div className="font-mono text-sm text-muted-foreground leading-relaxed">
-                  {s.hi
-                    ? s.val.split(new RegExp(`(${s.hi.join("|")})`, "g")).map((part, i) =>
-                        s.hi!.includes(part) ? (
-                          <span key={i} className="text-primary">{part}</span>
-                        ) : (
-                          <span key={i}>{part}</span>
-                        )
-                      )
-                    : s.val}
-                </div>
+              <div key={s.label} className="px-7 py-5 border-b border-border last:border-b-0">
+                <div className="font-mono text-[0.65rem] tracking-widest uppercase text-primary mb-2">{s.label}</div>
+                <div className="font-mono text-sm text-muted-foreground leading-relaxed">{s.val}</div>
               </div>
             ))}
           </div>
         </BorderGlow>
       </div>
     </div>
-  </BlueprintSection>
+  </section>
 );
 
 export default AboutSection;

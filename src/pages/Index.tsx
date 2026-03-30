@@ -8,14 +8,12 @@ import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import GradualBlur from "@/components/effects/GradualBlur";
-import BlueprintGrid from "@/components/layout/BlueprintGrid";
 
 const Index = () => (
   <>
     <div className="noise-overlay" aria-hidden="true" />
-    <BlueprintGrid />
-    <GradualBlur position="top" strength={1.5} height="4rem" divCount={4} />
-    <GradualBlur position="bottom" strength={2} height="5rem" divCount={5} />
+    <GradualBlur position="top" strength={1.2} height="3rem" divCount={4} />
+    <GradualBlur position="bottom" strength={1.5} height="4rem" divCount={5} />
     <Navbar />
     <HeroSection />
     <StatsBar />

@@ -1,10 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import CountUp from "./effects/CountUp";
-import BlueprintSection from "./layout/BlueprintSection";
 
 const stats = [
-  { target: 7, label: "Projetos de Segurança" },
-  { target: 16, label: "Ferramentas Dominadas" },
+  { target: 7, label: "Projetos" },
+  { target: 16, label: "Ferramentas" },
   { target: 5, label: "Certificações" },
   { target: 1000, label: "Horas de Estudo", separator: "." },
 ];
@@ -25,23 +24,19 @@ const StatsBar = () => {
   }, []);
 
   return (
-    <BlueprintSection label="sec::stats" className="bg-card">
-      <div ref={ref} className="max-w-[1380px] mx-auto px-6 md:px-12 grid grid-cols-2 lg:grid-cols-4">
+    <section className="relative py-16 px-6 md:px-16 lg:px-24">
+      <div ref={ref} className="max-w-[1200px] mx-auto glass-card rounded-2xl grid grid-cols-2 lg:grid-cols-4 divide-x divide-border">
         {stats.map((s, i) => (
-          <div
-            key={i}
-            className="py-12 px-6 md:px-10 border-r border-border last:border-r-0 relative group hover:bg-surface transition-colors"
-          >
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent-brand scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500" />
-            <div className="font-display text-5xl font-extrabold text-primary leading-none mb-2 tabular-nums">
+          <div key={i} className="py-10 px-6 md:px-10 text-center group">
+            <div className="font-display text-4xl md:text-5xl font-bold text-primary leading-none mb-2 tabular-nums">
               <CountUp to={s.target} duration={1.8} startWhen={visible} separator={s.separator || ""} />
-              <span>+</span>
+              <span className="text-primary/50">+</span>
             </div>
-            <div className="font-mono text-xs text-text-dim uppercase tracking-[2px]">{s.label}</div>
+            <div className="font-mono text-xs text-text-dim uppercase tracking-widest">{s.label}</div>
           </div>
         ))}
       </div>
-    </BlueprintSection>
+    </section>
   );
 };
 

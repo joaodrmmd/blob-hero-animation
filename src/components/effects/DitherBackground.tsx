@@ -26,9 +26,9 @@ const DitherBackground = ({
   waveSpeed = 0.03,
   waveFrequency = 2,
   waveAmplitude = 0.3,
-  waveColor = [0.4, 0.2, 0.6],
+  waveColor = [1, 1, 1],
   colorNum = 4,
-  pixelSize = 3,
+  pixelSize = 2,
 }: DitherBackgroundProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
@@ -59,10 +59,16 @@ const DitherBackground = ({
         const nx = x / w;
         const ny = y / h;
 
+        // Diagonal streak effect like the reference
+        const diagonal = (nx + (1 - ny)) * 0.5;
+        const streak = Math.exp(-Math.pow((diagonal - 0.5 + Math.sin(t * 0.3) * 0.05) * 3.5, 2));
+        
         const wave = Math.sin(nx * waveFrequency * Math.PI * 2 + t) * waveAmplitude;
         const wave2 = Math.cos(ny * waveFrequency * Math.PI * 1.5 + t * 0.7) * waveAmplitude * 0.5;
         const wave3 = Math.sin((nx + ny) * waveFrequency * Math.PI + t * 1.3) * waveAmplitude * 0.3;
-        const intensity = (ny + wave + wave2 + wave3) * 0.5 + 0.25;
+        
+        const baseIntensity = (ny + wave + wave2 + wave3) * 0.3 + 0.1;
+        const intensity = baseIntensity + streak * 0.7;
 
         const threshold = bayerMatrix8[y % 8][x % 8] / 64;
         const quantized = Math.floor(intensity * colorNum) / colorNum;
