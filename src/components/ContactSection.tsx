@@ -1,3 +1,5 @@
+import BlueprintSection from "./layout/BlueprintSection";
+
 const links = [
   { icon: "in", name: "LinkedIn", handle: "joaodrummond", href: "https://www.linkedin.com/in/joaodrummond/?locale=en-US" },
   { icon: "gh", name: "GitHub", handle: "joaodrmmd", href: "https://github.com/joaodrmmd" },
@@ -6,7 +8,7 @@ const links = [
 ];
 
 const ContactSection = () => (
-  <section id="contact" className="bg-background border-t border-border">
+  <BlueprintSection id="contact" label="sec::contact" className="bg-background">
     <div className="max-w-[1380px] mx-auto px-6 md:px-12 py-20 md:py-28">
       <header className="mb-16">
         <div className="font-mono text-xs tracking-[3px] text-accent-brand uppercase mb-3 flex items-center gap-2.5">
@@ -88,7 +90,7 @@ const ContactSection = () => (
         </div>
       </div>
     </div>
-  </section>
+  </BlueprintSection>
 );
 
 export default ContactSection;
