@@ -14,9 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Syne", "sans-serif"],
-        sans: ["DM Sans", "sans-serif"],
-        mono: ["DM Mono", "monospace"],
+        display: ["Space Grotesk", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -63,6 +63,11 @@ export default {
           DEFAULT: "hsl(var(--surface))",
           2: "hsl(var(--surface2))",
         },
+        glass: {
+          DEFAULT: "hsl(var(--glass))",
+          border: "hsl(var(--glass-border))",
+          highlight: "hsl(var(--glass-highlight))",
+        },
         "text-dim": "hsl(var(--text-dim))",
         green: "hsl(var(--green))",
         sidebar: {
@@ -78,8 +83,8 @@ export default {
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
       },
       keyframes: {
         "accordion-down": {
