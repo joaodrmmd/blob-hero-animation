@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import CountUp from "./effects/CountUp";
+import BlueprintSection from "./layout/BlueprintSection";
 
 const stats = [
   { target: 7, label: "Projetos de Segurança" },
@@ -24,8 +25,8 @@ const StatsBar = () => {
   }, []);
 
   return (
-    <div ref={ref} className="border-y border-border bg-card">
-      <div className="max-w-[1380px] mx-auto px-6 md:px-12 grid grid-cols-2 lg:grid-cols-4">
+    <BlueprintSection label="sec::stats" className="bg-card">
+      <div ref={ref} className="max-w-[1380px] mx-auto px-6 md:px-12 grid grid-cols-2 lg:grid-cols-4">
         {stats.map((s, i) => (
           <div
             key={i}
@@ -40,7 +41,7 @@ const StatsBar = () => {
           </div>
         ))}
       </div>
-    </div>
+    </BlueprintSection>
   );
 };
 

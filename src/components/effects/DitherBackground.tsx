@@ -61,7 +61,8 @@ const DitherBackground = ({
 
         const wave = Math.sin(nx * waveFrequency * Math.PI * 2 + t) * waveAmplitude;
         const wave2 = Math.cos(ny * waveFrequency * Math.PI * 1.5 + t * 0.7) * waveAmplitude * 0.5;
-        const intensity = (ny + wave + wave2) * 0.5 + 0.25;
+        const wave3 = Math.sin((nx + ny) * waveFrequency * Math.PI + t * 1.3) * waveAmplitude * 0.3;
+        const intensity = (ny + wave + wave2 + wave3) * 0.5 + 0.25;
 
         const threshold = bayerMatrix8[y % 8][x % 8] / 64;
         const quantized = Math.floor(intensity * colorNum) / colorNum;

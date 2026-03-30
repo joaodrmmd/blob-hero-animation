@@ -3,20 +3,33 @@ import DecryptedText from "./effects/DecryptedText";
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center px-6 md:px-12 pt-28 pb-20 overflow-hidden">
-    {/* Dither Background with gradient overlay */}
+    {/* Dither Background — more intense */}
     <DitherBackground
-      waveColor={[0.35, 0.15, 0.55]}
-      waveSpeed={0.025}
-      waveFrequency={2.5}
-      waveAmplitude={0.35}
-      colorNum={4}
-      pixelSize={3}
+      waveColor={[0.45, 0.18, 0.7]}
+      waveSpeed={0.03}
+      waveFrequency={3}
+      waveAmplitude={0.45}
+      colorNum={3}
+      pixelSize={2}
     />
     {/* Gradient overlay for readability */}
-    <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/40 z-[1]" />
-    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60 z-[1]" />
+    <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30 z-[1]" />
+    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50 z-[1]" />
 
-    <div className="relative z-10 max-w-[660px]">
+    {/* Blueprint frame around hero */}
+    <div className="absolute inset-6 md:inset-12 border border-primary/10 z-[2] pointer-events-none">
+      <div className="absolute -top-px -left-px w-4 h-4 border-t-2 border-l-2 border-primary/30" />
+      <div className="absolute -top-px -right-px w-4 h-4 border-t-2 border-r-2 border-primary/30" />
+      <div className="absolute -bottom-px -left-px w-4 h-4 border-b-2 border-l-2 border-primary/30" />
+      <div className="absolute -bottom-px -right-px w-4 h-4 border-b-2 border-r-2 border-primary/30" />
+      {/* Cross markers */}
+      <div className="absolute top-1/2 -left-px w-2 h-px bg-primary/20" />
+      <div className="absolute top-1/2 -right-px w-2 h-px bg-primary/20" />
+      <div className="absolute -top-px left-1/2 w-px h-2 bg-primary/20" />
+      <div className="absolute -bottom-px left-1/2 w-px h-2 bg-primary/20" />
+    </div>
+
+    <div className="relative z-10 max-w-[700px]">
       {/* Eyebrow */}
       <div className="hero-rise inline-flex items-center gap-2.5 mb-8" style={{ animationDelay: "0.2s" }}>
         <span
@@ -28,7 +41,7 @@ const HeroSection = () => (
         </span>
       </div>
 
-      {/* Heading with DecryptedText */}
+      {/* Heading */}
       <h1
         className="hero-rise font-display font-extrabold leading-none tracking-[-3px] mb-7"
         style={{ fontSize: "clamp(3em, 6.5vw, 5.6em)", animationDelay: "0.4s" }}

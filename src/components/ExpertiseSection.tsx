@@ -1,6 +1,7 @@
 import { useReveal } from "@/hooks/useReveal";
 import SpotlightCard from "./effects/SpotlightCard";
 import DecryptedText from "./effects/DecryptedText";
+import BlueprintSection from "./layout/BlueprintSection";
 
 const cards = [
   { num: "01", title: "Offensive Security", body: "Pentesting, análise de vulnerabilidades e exploitation. Desenvolvimento de payloads e técnicas de evasão." },
@@ -15,7 +16,7 @@ const ExpertiseSection = () => {
   const ref = useReveal();
 
   return (
-    <section id="expertise" className="bg-card border-t border-border">
+    <BlueprintSection id="expertise" label="sec::expertise" className="bg-card">
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 py-20 md:py-28">
         <header ref={ref} className="mb-16 opacity-0 translate-y-8 transition-all duration-700 data-[visible]:opacity-100 data-[visible]:translate-y-0">
           <div className="font-mono text-xs tracking-[3px] text-accent-brand uppercase mb-3 flex items-center gap-2.5">
@@ -31,11 +32,7 @@ const ExpertiseSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {cards.map((c) => (
-            <SpotlightCard
-              key={c.num}
-              className="group"
-              spotlightColor="rgba(168, 130, 255, 0.12)"
-            >
+            <SpotlightCard key={c.num} className="group" spotlightColor="rgba(168, 130, 255, 0.12)">
               <div className="p-10 md:p-12 relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent-brand scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500" />
                 <div className="font-mono text-xs text-text-dim tracking-[2px] mb-6">
@@ -57,7 +54,7 @@ const ExpertiseSection = () => {
           ))}
         </div>
       </div>
-    </section>
+    </BlueprintSection>
   );
 };
 

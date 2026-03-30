@@ -1,7 +1,8 @@
 import BorderGlow from "./effects/BorderGlow";
+import BlueprintSection from "./layout/BlueprintSection";
 
 const AboutSection = () => (
-  <section id="about" className="bg-card border-t border-border">
+  <BlueprintSection id="about" label="sec::about" className="bg-card">
     <div className="max-w-[1380px] mx-auto px-6 md:px-12 py-20 md:py-28">
       <header className="mb-16">
         <div className="font-mono text-xs tracking-[3px] text-accent-brand uppercase mb-3 flex items-center gap-2.5">
@@ -58,7 +59,7 @@ const AboutSection = () => (
         </BorderGlow>
       </div>
     </div>
-  </section>
+  </BlueprintSection>
 );
 
 export default AboutSection;

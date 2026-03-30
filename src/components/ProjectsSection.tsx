@@ -1,4 +1,5 @@
 import BorderGlow from "./effects/BorderGlow";
+import BlueprintSection from "./layout/BlueprintSection";
 
 const projects = [
   {
@@ -36,7 +37,7 @@ const projects = [
 ];
 
 const ProjectsSection = () => (
-  <section id="projects" className="bg-background">
+  <BlueprintSection id="projects" label="sec::projects" className="bg-background">
     <div className="max-w-[1380px] mx-auto px-6 md:px-12 py-20 md:py-28">
       <header className="mb-16">
         <div className="font-mono text-xs tracking-[3px] text-accent-brand uppercase mb-3 flex items-center gap-2.5">
@@ -49,13 +50,7 @@ const ProjectsSection = () => (
 
       <div className="flex flex-col gap-4">
         {projects.map((p, i) => (
-          <BorderGlow
-            key={i}
-            glowColor="262 90 73"
-            borderRadius={4}
-            glowRadius={30}
-            glowIntensity={0.6}
-          >
+          <BorderGlow key={i} glowColor="262 90 73" borderRadius={4} glowRadius={30} glowIntensity={0.6}>
             <article className="grid grid-cols-1 md:grid-cols-[300px_1fr] bg-card relative group">
               <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-primary to-accent-brand scale-y-0 origin-top group-hover:scale-y-100 transition-transform duration-400" />
               <div className="p-7 md:p-10 border-b md:border-b-0 md:border-r border-border flex flex-col gap-4">
@@ -85,7 +80,7 @@ const ProjectsSection = () => (
         ))}
       </div>
     </div>
-  </section>
+  </BlueprintSection>
 );
 
 export default ProjectsSection;
