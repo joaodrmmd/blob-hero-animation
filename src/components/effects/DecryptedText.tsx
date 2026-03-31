@@ -18,7 +18,7 @@ const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#
 
 const DecryptedText = ({
   text,
-  speed = 50,
+  speed = 25,          // was 50 — now 100 % faster globally
   maxIterations = 10,
   sequential = false,
   revealDirection = "start",
@@ -50,7 +50,7 @@ const DecryptedText = ({
     if (sequential) {
       let currentIndex = revealDirection === "end" ? text.length - 1 : 0;
       const step = revealDirection === "end" ? -1 : 1;
-      let revealed = new Array(text.length).fill(false);
+      const revealed = new Array(text.length).fill(false);
 
       intervalRef.current = setInterval(() => {
         if (
@@ -63,35 +63,26 @@ const DecryptedText = ({
           setHasDecrypted(true);
           return;
         }
-
         revealed[currentIndex] = true;
         currentIndex += step;
-
         setDisplayText(
-          text
-            .split("")
-            .map((char, i) => {
-              if (char === " ") return " ";
-              if (revealed[i]) return char;
-              return getRandomChar();
-            })
-            .join("")
+          text.split("").map((char, i) => {
+            if (char === " ") return " ";
+            if (revealed[i]) return char;
+            return getRandomChar();
+          }).join("")
         );
       }, speed);
     } else {
       let iteration = 0;
       intervalRef.current = setInterval(() => {
         setDisplayText(
-          text
-            .split("")
-            .map((char, i) => {
-              if (char === " ") return " ";
-              if (i < iteration) return char;
-              return getRandomChar();
-            })
-            .join("")
+          text.split("").map((char, i) => {
+            if (char === " ") return " ";
+            if (i < iteration) return char;
+            return getRandomChar();
+          }).join("")
         );
-
         iteration += 1 / maxIterations;
         if (iteration >= text.length) {
           clearInterval(intervalRef.current);
@@ -106,9 +97,7 @@ const DecryptedText = ({
   useEffect(() => {
     if (animateOn !== "view") return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasDecrypted) decrypt();
-      },
+      ([entry]) => { if (entry.isIntersecting && !hasDecrypted) decrypt(); },
       { threshold: 0.1 }
     );
     if (containerRef.current) observer.observe(containerRef.current);
@@ -126,10 +115,7 @@ const DecryptedText = ({
       {displayText.split("").map((char, i) => {
         const isRevealed = char === text[i];
         return (
-          <span
-            key={i}
-            className={isRevealed ? className : encryptedClassName}
-          >
+          <span key={i} className={isRevealed ? className : encryptedClassName}>
             {char}
           </span>
         );

@@ -35,6 +35,12 @@ const projects = [
   },
 ];
 
+const IconArrow = () => (
+  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+  </svg>
+);
+
 const ProjectsSection = () => (
   <section id="projects" className="relative py-24 md:py-32 px-6 md:px-16 lg:px-24">
     <div className="max-w-[1200px] mx-auto">
@@ -50,14 +56,16 @@ const ProjectsSection = () => (
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {projects.map((p, i) => (
-          <BorderGlow key={i} glowColor="170 80 55" borderRadius={16} glowRadius={30} glowIntensity={0.5}>
+          <BorderGlow key={i} glowColor="269 73 47" borderRadius={16} glowRadius={30} glowIntensity={0.5}>
             <article className="glass-card-strong p-8 md:p-10 h-full flex flex-col group !rounded-2xl">
               <div className="flex items-center gap-3 mb-5">
                 <span className="font-mono text-xs tracking-wider uppercase text-primary bg-primary-dim px-3 py-1 rounded-full">
                   {p.cat}
                 </span>
               </div>
-              <h3 className="font-display text-xl font-bold text-foreground tracking-tight mb-3 leading-tight">{p.title}</h3>
+              <h3 className="font-display text-xl font-bold text-foreground tracking-tight mb-3 leading-tight">
+                {p.title}
+              </h3>
               <p className="text-sm text-muted-foreground leading-relaxed font-light mb-6 flex-1">{p.desc}</p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {p.tags.map((t) => (
@@ -70,12 +78,10 @@ const ProjectsSection = () => (
                 href={p.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-mono text-sm text-primary hover:text-accent-brand transition-colors"
+                className="inline-flex items-center gap-2 font-mono text-sm text-primary hover:text-foreground transition-colors"
               >
                 {p.linkText}
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                <IconArrow />
               </a>
             </article>
           </BorderGlow>
