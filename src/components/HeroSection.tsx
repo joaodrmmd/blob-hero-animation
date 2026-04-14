@@ -38,7 +38,7 @@ const HeroSection = () => (
         <div className="glass-card inline-flex items-center gap-3 px-5 py-2.5">
           <span className="w-2 h-2 rounded-full bg-green" style={{ animation: "ey-pulse 2.5s ease infinite", boxShadow: "0 0 10px hsl(var(--green))" }} />
           <span className="font-mono text-xs tracking-wide text-muted-foreground">
-            Disponível para consultorias — <strong className="text-primary font-medium">Recife, PE</strong>
+            Disponível para consultorias
           </span>
         </div>
       </div>
