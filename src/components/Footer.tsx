@@ -16,7 +16,7 @@ const Footer = () => (
           <div className="font-display text-lg font-bold tracking-tight mb-2">
             João <span className="text-primary">D.</span>
           </div>
-          <p className="text-sm text-muted-foreground font-light">Security Researcher & Offensive Engineer</p>
+          <p className="text-sm text-muted-foreground font-light">Security Researcher & Threat Intelligence Analyst</p>
         </div>
         <div className="flex gap-3 flex-wrap">
           {socials.map((s) => (
@@ -29,11 +29,11 @@ const Footer = () => (
       </div>
 
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-border">
-        <span className="font-mono text-xs text-text-dim">© 2025 João D. — Todos os direitos reservados.</span>
+        <span className="font-mono text-xs text-text-dim">© 2026 João D. — Todos os direitos reservados.</span>
 
         <div className="flex items-center gap-5">
           <div className="font-mono text-xs text-text-dim flex gap-4">
-            <span className="text-primary/60">Hacking Ético</span>
+            <span className="text-primary/60">Hunting</span>
             <span>·</span>
             <span className="text-primary/60">Threat Intelligence</span>
           </div>
