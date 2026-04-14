@@ -45,7 +45,7 @@ const AboutSection = () => (
           </p>
           <p>
             Minha trajetória inclui pesquisa em Threat Intelligence, desenvolvimento de antivírus com machine
-            learning, e o A1.dev — toolbox multiplataforma com backend em Python.
+            learning, e o A1.dev, uma toolbox multiplataforma.
           </p>
         </div>
 

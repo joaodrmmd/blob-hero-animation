@@ -76,7 +76,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.18 }}
-                style={{ fontSize: "clamp(1.1rem, 4.5vw, 3.4rem)" }} // Tamanho reduzido em 50%
+                style={{ fontSize: "clamp(0.88rem, 3.6vw, 2.72rem)" }} // Tamanho reduzido novamente
               >
                 <span
                   className="font-black select-none"
@@ -103,7 +103,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
               initial={{ scale: 1, opacity: 1 }}
               animate={{ scale: 22, opacity: 0 }}
               transition={{ duration: 0.85, ease: [0.2, 0, 0.8, 1] }}
-              style={{ fontSize: "clamp(1.1rem, 4.5vw, 3.4rem)" }} // Tamanho reduzido em 50%
+              style={{ fontSize: "clamp(0.88rem, 3.6vw, 2.72rem)" }} // Tamanho reduzido novamente
             >
               <span
                 className="font-black select-none"
